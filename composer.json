@@ -1,0 +1,28 @@
+{
+    "name": "randohinn/userfile",
+    "description": "Adds file-based user login functionality to Laravel's Auth flow.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rando Hinn",
+            "email": "rando@randohinn.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "symfony/yaml" : "^4.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Randohinn\\Userfile\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Randohinn\\Userfile\\PackageServiceProvider"
+            ]
+        }
+    }
+}
