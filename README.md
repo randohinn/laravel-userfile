@@ -7,6 +7,8 @@ Userfile is a Laravel package that allows storing user data in yaml files. It al
 ## Usage
 
 ### Installation
+Generate Laravel's default auth scafffolding. `php artisan make:auth`.
+
 You can install the package by running
 
 ```
@@ -35,7 +37,7 @@ Add `id` and `api_token` to the `$fillable` array of the model. This allows the 
 
 By default, Userfile expects to find a `userfile` folder in your storage folder. You can change this, by creating a custom filesystem disk in the filyesystem config, and editing `config/userfile.php` to state the name of the new disk, instead of `userfile`. In this file, you can also define a subfolder or your user files, if that is what you want.
 
-The last part, is to set your `config/auth.php` to contain `'guard' => 'userfile',` instead of the default `'guard' => 'web',`
+The last part, is to set your `config/auth.php` to contain `'guard' => 'userfile',` instead of the default `'guard' => 'web'`. You may the delete unnecessary auth controllers.
 
 ## Creating users
 
