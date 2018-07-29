@@ -3,32 +3,38 @@
 namespace Randohinn\Userfile;
 
 use Auth;
+use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Gate;
-use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class PackageServiceProvider extends ServiceProvider
 {
-    /**
-     * The policy mappings for the application.
-     *
-     * @var array
-     */
-    protected $policies = [
-        'App\Model' => 'App\Policies\ModelPolicy',
-    ];
 
-    /**
-     * Register any authentication / authorization services.
-     *
-     * @return void
-     */
     public function boot()
     {
-
-        $this->registerPolicies();
-
-        Auth::provider('files', function($app, array $config) {
+        Auth::provider('userfiles', function($app, array $config) {
             return new UserProvider();
         });
+
+         $this->publishes([
+            __DIR__.'/../config/userfile.php' => config_path('userfile.php'),
+        ]);
+    }
+
+    public function register() {
+        app()->config["auth.guards.userfile"] = [
+            'driver' => 'session',
+            'provider' => 'userfiles',
+        ];
+
+        app()->config["auth.providers.userfiles"] = [
+            'driver' => 'userfiles',
+            'model' => App\User::class,
+        ];
+
+        app()->config["filesystems.disks.userfile"] = [
+            'driver' => 'local',
+            'root' => storage_path('userfile'),
+        ];
+
     }
 }
