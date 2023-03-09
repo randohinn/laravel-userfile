@@ -1,6 +1,7 @@
 # Laravel Userfile
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/randohinn/userfile.svg?style=flat-square)](https://packagist.org/packages/randohinn/userfile)
 
+# UNMAINTAINED AND OF UNKNOWN WORKING STATUS 
 
 Userfile is a Laravel package that allows storing user data in yaml files. It also supports Bearer type API authentication.
 
